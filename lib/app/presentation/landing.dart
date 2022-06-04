@@ -31,17 +31,25 @@ class _LandingState extends State<Landing> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 30),
           Center(
             child: FutureBuilder<ServiceResponse?>(
               future: data,
               builder: (_, snapshot) {
                 if (snapshot.hasData) {
-                  ServiceResponse? intel = snapshot.data;
-                  Info? data = intel!.data;
-                  return Text(
-                    data!.title.toString(),
-                  );
+                  ServiceResponse? responseData = snapshot.data;
+
+                  // check the status of the service response
+
+                  if (responseData!.status != false) {
+                    Info? data = responseData.data;
+                    return Text(data!.title.toString());
+                  } else {
+                    // if false, return service response message [success, or error message]
+                    return Text(responseData.message.toString());
+                  }
                 }
                 return const CircularProgressIndicator.adaptive();
               },

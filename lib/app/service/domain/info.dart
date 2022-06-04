@@ -1,5 +1,5 @@
 class Info {
-  String? userId;
+  int? userId;
   int? id;
   String? title;
 
@@ -8,8 +8,8 @@ class Info {
   factory Info.fromJson(Map<String, dynamic> json) {
     return Info(
       userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
+      id: json['id'] as int,
+      title: json['title'] as String,
     );
   }
 }
