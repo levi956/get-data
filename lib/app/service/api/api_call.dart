@@ -20,6 +20,9 @@ class Auth {
       );
     }
 
+    // NOTE
+    // to get data of dio request , add the [.data] instance
+
     print(_response.data.runtimeType);
 
     // parsing the jsonn response type [either a List or Map]
