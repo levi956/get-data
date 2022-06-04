@@ -26,6 +26,8 @@ class _LandingState extends State<Landing> {
     super.initState();
   }
 
+  // properly got error without app crashing
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

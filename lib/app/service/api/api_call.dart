@@ -6,7 +6,7 @@ import 'package:get_data/app/service/domain/service_response.dart';
 class Auth {
   Dio dio = Dio();
   ServiceResponse m = ServiceResponse();
-  final String _baseUrl = 'https://jsonplaceholder.typicode.com/albumss';
+  final String _baseUrl = 'https://jsonplaceholder.typicode.com/albums';
 
   Future<ServiceResponse> getData() async {
     var _response;
@@ -19,8 +19,11 @@ class Auth {
         message: e.error.toString(),
       );
     }
+
     print(_response.data.runtimeType);
 
+    // parsing the jsonn response type [either a List or Map]
+    // mapping the object response to a an Info object
     List<dynamic> data =
         _response.data.map((dynamic item) => Info.fromJson(item)).toList();
 
